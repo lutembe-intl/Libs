@@ -11,15 +11,18 @@
         .container { max-width: 600px; margin: 20px auto; padding: 20px; }
         
         /* Learner Library Section */
-        .library-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        .library-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; margin-bottom: 30px; }
         .library-card i { font-size: 50px; color: #003366; margin-bottom: 15px; }
         .access-btn { display: inline-block; background: #d93025; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
         .access-btn:hover { background: #b0261d; transform: scale(1.05); }
 
         /* Teacher Admin Section */
-        .admin-box { background: #003366; color: white; padding: 25px; border-radius: 12px; margin-top: 40px; text-align: center; }
-        input[type="password"] { width: 80%; padding: 12px; margin: 15px 0; border-radius: 5px; border: none; text-align: center; }
-        .upload-btn { background: #25D366; color: white; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 50px; text-decoration: none; display: inline-block; }
+        .admin-box { background: #003366; color: white; padding: 25px; border-radius: 12px; text-align: center; }
+        input[type="password"] { width: 80%; padding: 12px; margin: 15px 0; border-radius: 5px; border: 1px solid #ccc; text-align: center; font-size: 16px; }
+        .upload-btn { background: #25D366; color: white; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 50px; text-decoration: none; display: inline-block; font-size: 16px; }
+        
+        /* Error Message Styling */
+        #errorHint { color: #ffcccc; font-size: 14px; display: none; margin-bottom: 15px; font-weight: bold; }
         #adminPortal { display: none; }
     </style>
 </head>
@@ -42,14 +45,18 @@
 
         <div class="admin-box">
             <h4>🔐 Teacher Login (Upload Materials)</h4>
+            
             <div id="loginArea">
-                <input type="password" id="passCode" placeholder="Enter Portal Password">
-                <br>
+                <p style="font-size: 14px; opacity: 0.9;">Enter password to access the upload portal.</p>
+                <input type="password" id="passCode" placeholder="Enter Password">
+                
+                <p id="errorHint">Incorrect password. Please try again.</p>
+                
                 <button class="upload-btn" onclick="verifyAdmin()">Login to Upload</button>
             </div>
 
             <div id="adminPortal">
-                <p>You are logged in. Use the button below to upload new materials to the school drive.</p>
+                <p style="margin-bottom: 20px;">✅ Access Granted. You can now upload files to the Drive.</p>
                 <a href="https://drive.google.com/drive/folders/1EJhU382pbc4LXVDmN8Hw-gt07ujqx0NG" target="_blank" class="upload-btn">
                     <i class="fas fa-cloud-upload-alt"></i> UPLOAD TO DRIVE
                 </a>
@@ -60,14 +67,28 @@
     <script>
         function verifyAdmin() {
             const code = document.getElementById('passCode').value;
-            // Your password: Bikongolo@Libs
+            const errorHint = document.getElementById('errorHint');
+            const adminPortal = document.getElementById('adminPortal');
+            const loginArea = document.getElementById('loginArea');
+
+            // Password defined by user: Bikongolo@Libs
             if (code === "Bikongolo@Libs") {
-                document.getElementById('loginArea').style.display = 'none';
-                document.getElementById('adminPortal').style.display = 'block';
+                loginArea.style.display = 'none';
+                adminPortal.style.display = 'block';
             } else {
-                alert("Incorrect Password. Access Denied.");
+                // Show the red error text instead of a pop-up alert
+                errorHint.style.display = 'block';
+                // Clear the box so they can try again
+                document.getElementById('passCode').value = "";
             }
         }
+        
+        // Allow pressing "Enter" key to submit password
+        document.getElementById("passCode").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                verifyAdmin();
+            }
+        });
     </script>
 
 </body>
