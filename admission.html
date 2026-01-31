@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - Lutembe Boarding School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { margin: 0; font-family: sans-serif; background-color: #f4f4f4; color: #333; }
+        .header-main { background: white; padding: 15px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 4px solid #003366; color: #003366; text-transform: uppercase; }
+        .header-main img { width: 60px; height: auto; }
+        nav { background: #003366; padding: 12px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .form-container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .section-header { background: #d93025; color: white; padding: 10px; margin: 20px 0 15px 0; font-weight: bold; text-transform: uppercase; font-size: 14px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .whatsapp-note { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; font-size: 13px; border-radius: 4px; color: #856404; line-height: 1.6; text-align: center; }
+        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; background: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; border: none; }
+        .whatsapp-btn i { margin-right: 10px; font-size: 20px; }
+        .submit-btn { width: 100%; background: #003366; color: white; border: none; padding: 18px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; border-radius: 4px; }
+        footer { background: #003366; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <header class="header-main">
+        <img src="IMG-20260123-WA0026.jpg" alt="Logo">
+        <h1>Lutembe Boarding School</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="admission.html">ADMISSION</a>
+    </nav>
+
+    <div class="form-container">
+        <form action="https://formspree.io/f/mwvbjgvd" method="POST">
+            
+            <div class="section-header">Applicant Details</div>
+            <div class="form-group">
+                <label>Student's Full Name</label>
+                <input type="text" name="StudentName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" name="DOB" required>
+            </div>
+
+            <div class="form-group">
+                <label>PLE Index Number</label>
+                <input type="text" name="IndexNumber" required>
+            </div>
+
+            <div class="section-header">PLE Results</div>
+            
+            <div class="form-group">
+                <label>English Grade</label>
+                <select name="English" required>
+                    <option value="">Select Grade</option>
+                    <option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Mathematics Grade</label>
+                <select name="Mathematics" required>
+                    <option value="">Select Grade</option>
+                    <option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Social Studies (SST) Grade</label>
+                <select name="SST" required>
+                    <option value="">Select Grade</option>
+                    <option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Integrated Science Grade</label>
+                <select name="Science" required>
+                    <option value="">Select Grade</option>
+                    <option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>PLE Certificate Submission</label>
+                <div class="whatsapp-note">
+                    <strong>ONE-TIME SUBMISSION ONLY:</strong><br>
+                    After clicking submit below, click the icon to send a <strong>clear photo of the PLE Certificate only</strong>. 
+                    <br>
+                    The photo must show the Name, Index Number, and all Grades clearly.
+                    <br>
+                    <a href="https://wa.me/256742183392?text=I%20am%20submitting%20the%20PLE%20Certificate%20for%20admission." class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Submit Certificate via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-header">Parent / Guardian Information</div>
+            <div class="form-group">
+                <label>Parent/Guardian Name</label>
+                <input type="text" name="ParentName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Telephone Contact</label>
+                <input type="tel" name="Phone" required>
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>LUTEMBE BOARDING SCHOOL INT'L</p>
+    </footer>
+
+</body>
+</html>
