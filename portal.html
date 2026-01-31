@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Portal - Lutembe Boarding School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { margin: 0; font-family: sans-serif; background-color: #f4f4f4; text-align: center; }
+        .header-main { background: white; padding: 15px; border-bottom: 4px solid #003366; color: #003366; text-transform: uppercase; }
+        .portal-container { max-width: 500px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { background: #003366; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        #uploadSection { display: none; } /* Hidden until password is correct */
+        .error { color: #d93025; font-size: 13px; display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="header-main">
+        <h1>Resources Portal</h1>
+    </header>
+
+    <div class="portal-container" id="loginSection">
+        <h3>🔒 Protected Access</h3>
+        <p>Enter password to upload academic resources</p>
+        <input type="password" id="passInput" placeholder="Enter Password">
+        <p class="error" id="errMsg">Incorrect password. Please try again.</p>
+        <button class="btn" onclick="checkPassword()">Enter Portal</button>
+    </div>
+
+    <div class="portal-container" id="uploadSection">
+        <h3>Upload Resource</h3>
+        <p>Books, Audios, Images, or Videos</p>
+        <form action="https://formspree.io/f/mwvbjgvd" method="POST" enctype="multipart/form-data">
+            <input type="text" name="UploaderName" placeholder="Your Name" required>
+            <input type="text" name="ResourceTitle" placeholder="Resource Title (e.g. P7 Math Book)" required>
+            <label style="display:block; text-align:left; font-size:12px; margin-top:10px;">Select File (Any Format):</label>
+            <input type="file" name="attachment" required>
+            <button type="submit" class="btn">UPLOAD TO LIBRARY</button>
+        </form>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passInput').value;
+            // The password you requested: Bikongolo@Libs
+            if (pass === "Bikongolo@Libs") {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('uploadSection').style.display = 'block';
+            } else {
+                document.getElementById('errMsg').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>

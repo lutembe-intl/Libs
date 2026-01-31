@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lutembe Boarding School - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: sans-serif; }
         .header-main { background: white; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 4px solid #003366; text-transform: uppercase; color: #003366; }
         .header-main img { width: 80px; height: auto; }
         .header-main h1 { margin: 0; font-size: 30px; }
-        nav { background: #003366; padding: 12px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
-        .nav a { color: white; margin: 0 10px; text-decoration: none; font-size: 14px; font-weight: bold; }
+        
+        /* Navigation & Hamburger Menu Styling */
+        nav { background: #003366; padding: 12px 20px; position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; }
+        .menu-toggle { color: white; font-size: 24px; cursor: pointer; margin-right: 20px; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+        
+        /* Mobile Menu Behavior */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 50px; left: 0; background: #003366; padding: 10px; }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 10px 0; border-bottom: 1px solid #004488; }
+        }
+
         .card-headings h1 { padding: 10px; margin: 0; font-size: 24px; text-align: left; color: #003366; }
         .card { background: #fff; border: 1px solid #ddd; border-radius: 15px; margin: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); color: #003366; text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
         .card img, .card video { width: 100%; height: auto; display: block; object-fit: cover; border-bottom: 5px solid #003366; }
@@ -25,27 +38,33 @@
        <h1>Lutembe Boarding School</h1>
     </header>
 
-    <nav class="nav">
-        <a href="index.html">HOME</a>
-        <a href="admission.html">ADMISSION</a>
-        <a href="#">CONTACTS</a>
-        <a href="#">ADDRESS</a>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">HOME</a>
+            <a href="admission.html">ADMISSION</a>
+            <a href="portal.html">ACADEMIC RESOURCES</a>
+            <a href="#">CONTACTS</a>
+        </div>
     </nav>
 
     <div class="card-headings"><u><h1>School Activities</h1></u></div>
+    
     <div class="card">
         <img src="0703382700prefects.jpeg" alt="Prefects">
         <div class="card-content"><b><p>At LUTEMBE BOARDING SCHL Leadership is Essential</p></b></div>
     </div>
 
     <div class="card">
-        <img src="0703382700netball.jpeg">
+        <img src="0703382700netball.jpeg" alt="Netball">
         <div class="card-content"><b><p>The school's netball team</p></b></div>
     </div>
 
     <div class="card">
         <video controls>
-           <source src="1769121842340.mp4">
+           <source src="1769121842340.mp4" type="video/mp4">
         </video>
         <div class="card-content"><b><p>2025 Prom Party Highlights</p></b></div>
     </div>
@@ -54,5 +73,11 @@
         <p>LUTEMBE BOARDING SCHOOL INT'L</p>
         <p>Gayaza, along Zirobwe Road | TEL: 0703382700</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
