@@ -75,9 +75,22 @@
     </footer>
 
     <script>
+        // Hamburger Menu Toggle
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
+
+        // Check if form was just submitted successfully
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('status') === 'success') {
+                // Notifying the user immediately
+                alert("Application Successfully Submitted!\n\nThank you for choosing Lutembe Boarding School. Please remember to send your PLE Certificate via WhatsApp.");
+                
+                // Clean up the URL so the message doesn't repeat if they refresh
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        };
     </script>
 </body>
 </html>

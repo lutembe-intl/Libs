@@ -45,6 +45,8 @@
     <div class="form-container">
         <form action="https://formspree.io/f/mwvbjgvd" method="POST">
             
+            <input type="hidden" name="_next" value="index.html?status=success">
+
             <div class="section-header">Applicant Details</div>
             <div class="form-group">
                 <label>Student's Full Name</label>
@@ -142,7 +144,6 @@
     </footer>
 
     <script>
-        // Restricts input to numbers and automatically inserts the slash for Ugandan Index Numbers
         const indexInput = document.getElementById('IndexNumber');
         indexInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/[^0-9]/g, '');
