@@ -3,94 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lutembe Boarding School - Home</title>
+    <title>Admission - Lutembe Boarding School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: sans-serif; }
-        .header-main { background: white; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 4px solid #003366; text-transform: uppercase; color: #003366; }
-        .header-main img { width: 80px; height: auto; }
-        .header-main h1 { margin: 0; font-size: 30px; }
-        
-        /* Navigation & Hamburger Menu Styling */
-        nav { background: #003366; padding: 12px 20px; position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; }
-        .menu-toggle { color: white; font-size: 24px; cursor: pointer; margin-right: 20px; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: bold; text-transform: uppercase; }
-        
-        /* Mobile Menu Behavior */
-        @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 50px; left: 0; background: #003366; padding: 10px; }
-            .nav-links.active { display: flex; }
-            .nav-links a { padding: 10px 0; border-bottom: 1px solid #004488; }
-        }
-
-        .card-headings h1 { padding: 10px; margin: 0; font-size: 24px; text-align: left; color: #003366; }
-        .card { background: #fff; border: 1px solid #ddd; border-radius: 15px; margin: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); color: #003366; text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
-        .card img, .card video { width: 100%; height: auto; display: block; object-fit: cover; border-bottom: 5px solid #003366; }
-        .card-content { padding: 15px; }
-        footer { background: #003366; padding: 20px; text-align: center; color: white; margin-top: 20px; }
+        body { margin: 0; font-family: sans-serif; background-color: #f4f4f4; color: #333; }
+        .header-main { background: white; padding: 15px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 4px solid #003366; color: #003366; text-transform: uppercase; }
+        .header-main img { width: 60px; height: auto; }
+        nav { background: #003366; padding: 12px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .form-container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .section-header { background: #d93025; color: white; padding: 10px; margin: 20px 0 15px 0; font-weight: bold; text-transform: uppercase; font-size: 14px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin: 25px 0; background: #eef2f7; padding: 15px; border-radius: 4px; border-left: 4px solid #003366; }
+        .checkbox-group input { width: auto; margin-top: 3px; cursor: pointer; }
+        .checkbox-group label { font-weight: normal; cursor: pointer; font-size: 14px; line-height: 1.4; }
+        .checkbox-group a { color: #d93025; font-weight: bold; text-decoration: underline; }
+        .whatsapp-note { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; font-size: 13px; border-radius: 4px; color: #856404; line-height: 1.6; text-align: center; }
+        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; background: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; border: none; }
+        .whatsapp-btn i { margin-right: 10px; font-size: 20px; }
+        .submit-btn { width: 100%; background: #003366; color: white; border: none; padding: 18px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; border-radius: 4px; }
+        footer { background: #003366; color: white; text-align: center; padding: 20px; margin-top: 30px; }
     </style>
 </head>
 <body>
 
     <header class="header-main">
-       <img src="IMG-20260123-WA0026.jpg" alt="School Badge">
-       <h1>Lutembe Boarding School</h1>
+        <img src="IMG-20260123-WA0026.jpg" alt="Logo">
+        <h1>Lutembe Boarding School</h1>
     </header>
 
     <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">HOME</a>
-            <a href="admission.html">ADMISSION</a>
-            <a href="portal.html">ACADEMIC RESOURCES</a>
-            <a href="#">CONTACTS</a>
-        </div>
+        <a href="index.html">HOME</a>
+        <a href="admission.html">ADMISSION</a>
     </nav>
 
-    <div class="card-headings"><u><h1>School Activities</h1></u></div>
-    
-    <div class="card">
-        <img src="0703382700prefects.jpeg" alt="Prefects">
-        <div class="card-content"><b><p>At LUTEMBE BOARDING SCHL Leadership is Essential</p></b></div>
+    <div class="form-container">
+        <form action="https://formspree.io/f/mwvbjgvd" method="POST">
+            
+            <input type="hidden" name="_next" value="https://lutembe-intl.github.io/index.html?status=success">
+
+            <div class="section-header">Applicant Details</div>
+            <div class="form-group">
+                <label>Student's Full Name</label>
+                <input type="text" name="StudentName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" name="DOB" required>
+            </div>
+
+            <div class="form-group">
+                <label>PLE Index Number</label>
+                <input type="text" id="IndexNumber" name="IndexNumber" placeholder="000000/000" pattern="[0-9]{6}/[0-9]{3}" required maxlength="10">
+            </div>
+
+            <div class="section-header">PLE Results</div>
+            <div class="form-group"><label>English Grade</label><select name="English" required><option value="">Select Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
+            <div class="form-group"><label>Mathematics Grade</label><select name="Mathematics" required><option value="">Select Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
+            <div class="form-group"><label>SST Grade</label><select name="SST" required><option value="">Select Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
+            <div class="form-group"><label>Science Grade</label><select name="Science" required><option value="">Select Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
+
+            <div class="section-header">Parent / Guardian Information</div>
+            <div class="form-group"><label>Parent/Guardian Name</label><input type="text" name="ParentName" required></div>
+            <div class="form-group"><label>Telephone Contact</label><input type="tel" name="Phone" required></div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreement" name="RuleAgreement" required>
+                <label for="agreement">I have read the <a href="rules.html" target="_blank">Rules and Regulations</a> and I'll abide with them.</label>
+            </div>
+
+            <div class="form-group">
+                <label>PLE Certificate Submission</label>
+                <div class="whatsapp-note">
+                    <strong>ONE-TIME SUBMISSION ONLY:</strong><br>
+                    Click the icon below after submitting this form to send a <strong>clear photo of the PLE Certificate</strong>.
+                    <br>
+                    <a href="https://wa.me/256703382700?text=I%20am%20submitting%20the%20PLE%20Certificate." class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Submit Certificate via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+        </form>
     </div>
 
-    <div class="card">
-        <img src="0703382700netball.jpeg" alt="Netball">
-        <div class="card-content"><b><p>The school's netball team</p></b></div>
-    </div>
-
-    <div class="card">
-        <video controls>
-           <source src="1769121842340.mp4" type="video/mp4">
-        </video>
-        <div class="card-content"><b><p>2025 Prom Party Highlights</p></b></div>
-    </div>
-
-    <footer>
-        <p>LUTEMBE BOARDING SCHOOL INT'L</p>
-        <p>Gayaza, along Zirobwe Road | TEL: 0703382700</p>
-    </footer>
+    <footer><p>LUTEMBE BOARDING SCHOOL INT'L</p></footer>
 
     <script>
-        // Hamburger Menu Toggle
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // Check if form was just submitted successfully
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('status') === 'success') {
-                // Notifying the user immediately
-                alert("Application Successfully Submitted!\n\nThank you for choosing Lutembe Boarding School. Please remember to send your PLE Certificate via WhatsApp.");
-                
-                // Clean up the URL so the message doesn't repeat if they refresh
-                window.history.replaceState({}, document.title, window.location.pathname);
-            }
-        };
+        const indexInput = document.getElementById('IndexNumber');
+        indexInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            if (value.length > 6) { value = value.slice(0, 6) + '/' + value.slice(6, 9); }
+            e.target.value = value;
+        });
     </script>
 </body>
 </html>
