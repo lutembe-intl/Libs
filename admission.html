@@ -47,7 +47,7 @@
         .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin: 30px 0; background: #fff8f8; padding: 20px; border-radius: 5px; border: 1px solid #f5e1e1; }
         .checkbox-group input { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
         .checkbox-group label { font-weight: 500; cursor: pointer; line-height: 1.5; margin-bottom: 0; }
-        .checkbox-group a { color: var(--accent-red); text-decoration: underline; font-weight: 700; }
+        .checkbox-group a { color: var(--accent-red); text-decoration: underline; font-weight: 700; cursor: pointer; }
 
         .whatsapp-section { background: #e7f3ef; border: 1px dashed #25D366; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
         .whatsapp-btn { 
@@ -65,19 +65,27 @@
         }
         .submit-btn:hover { background: #002244; box-shadow: 0 5px 15px rgba(0,51,102,0.3); }
 
+        /* MODAL STYLES */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow-y: auto; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 30px; border-radius: 12px; width: 90%; max-width: 650px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+        .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; line-height: 20px; }
+        .close-modal:hover { color: #000; }
+        
+        .rules-text h2 { color: var(--primary-blue); border-bottom: 3px solid var(--accent-red); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
+        .rules-text h3 { color: var(--primary-blue); font-size: 18px; margin-top: 25px; background: var(--light-gray); padding: 5px 10px; border-left: 4px solid var(--primary-blue); }
+        .rule-list { padding-left: 20px; }
+        .rule-list li { font-size: 15px; line-height: 1.6; margin-bottom: 12px; color: #444; }
+        .rule-list strong { color: #222; }
+
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 30px; font-size: 14px; }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            .nav-links { 
-                display: none; flex-direction: column; width: 100%; position: absolute; 
-                top: 50px; left: 0; background: var(--primary-blue); padding: 20px; box-sizing: border-box; 
-            }
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 50px; left: 0; background: var(--primary-blue); padding: 20px; box-sizing: border-box; }
             .nav-links.active { display: flex; }
-            .nav-links a { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .form-container { padding: 25px 20px; margin: 15px; }
             .header-main h1 { font-size: 18px; }
+            .modal-content { margin: 10% auto; padding: 20px; }
         }
     </style>
 </head>
@@ -108,7 +116,7 @@
             <div class="section-header"><span>1. Applicant Details</span> <i class="fas fa-user-graduate"></i></div>
             <div class="form-group">
                 <label>Student's Full Name</label>
-                <input type="text" name="StudentName" placeholder="e.g. John Doe" required>
+                <input type="text" name="StudentName" placeholder="e.g. Mugalu Edris" required>
             </div>
 
             <div class="form-group">
@@ -141,7 +149,7 @@
 
             <div class="checkbox-group">
                 <input type="checkbox" id="agreement" name="RuleAgreement" required>
-                <label for="agreement">I confirm that I have read the <a href="rules.html" target="_blank">Rules and Regulations</a> of Lutembe Boarding School and agree to abide by them.</label>
+                <label for="agreement">I confirm that I have read the <a onclick="openRules()">Rules and Regulations</a> of Lutembe Boarding School and agree to abide by them.</label>
             </div>
 
             <div class="whatsapp-section">
@@ -155,6 +163,51 @@
         </form>
     </div>
 
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRules()">&times;</span>
+            <div class="rules-text">
+                <h2>Rules & Regulations</h2>
+                
+                <h3>1. Fundamental Principle</h3>
+                <ul class="rule-list" style="list-style-type: none; padding-left: 0;">
+                    <li><strong>1.1 Common sense must be common.</strong> This is the guiding principle for all behavior within the school community.</li>
+                </ul>
+
+                <h3>2. Academic Conduct</h3>
+                <ol class="rule-list">
+                    <li><strong>Language:</strong> English is the official language of communication at all times except during Swahili or Luganda lessons.</li>
+                    <li><strong>Punctuality:</strong> All students are expected to be respectful towards the bell. Students must follow the school programs and the school Timetable. Lack of punctuality may lead to serious penalties.Students must be in their respective classrooms, assemblies at the exact designated times.</li>
+                    <li><strong>Preparation:</strong> Every student must attend all morning and evening preps (self-study sessions) without fail.</li>
+                </ol>
+
+                <h3>3. Personal Grooming & Uniform</h3>
+                <ol class="rule-list" start="4">
+                    <li><strong>Official Uniform:</strong> The school uniform must be worn neatly and in full. "Slimming" of trousers or shortening of skirts is strictly prohibited.</li>
+                    <li><strong>Hair:</strong> Boys must keep their hair at a maximum height of 1 inch. Girls must keep their hair short and natural or in simple, school-approved braids. No hair extensions or chemicals.</li>
+                    
+                    <li><strong>Jewelry:</strong> No jewelry (earrings, necklaces, rings) or makeup/nail polish is allowed on school premises.</li>
+                </ol>
+
+                <h3>4. Prohibited Items (Contraband)</h3>
+                <ol class="rule-list" start="7">
+                    <li><strong>Electronics:</strong> Mobile phones, radios, tablets, and cameras are strictly banned. Possession results in immediate confiscation and disciplinary action.</li>
+                    <li><strong>Intoxicants:</strong> Alcohol, cigarettes, and illicit drugs are a "Zero Tolerance" offense leading to immediate expulsion.</li>
+               
+              </ol>
+
+                <h3>5. Discipline & Safety</h3>
+                <ol class="rule-list" start="10">
+                    <li><strong>Out of Bounds:</strong> No student may leave the school gate without a signed Gate Pass from the Headteacher or Warden.</li>
+                    <li><strong>Relationships:</strong> Romantic relationships ("Coupling") between students are strictly forbidden. The only type of relationship in the school is strictly academic relationships.
+                    </li>
+                    <li><strong>Respect:</strong> Absolute respect must be shown to all staff, prefects, and fellow students. Bullying or "teasing" will lead to expulsion.</li>
+                </ol>
+            </div>
+            <button class="submit-btn" style="margin-top:20px;" onclick="closeRules()">I Accept the Rules</button>
+        </div>
+    </div>
+
     <footer>
         <p><strong>LUTEMBE BOARDING SCHOOL INT'L</strong></p>
         <p style="opacity: 0.8; margin-top: 5px;">Exploring the Heights </p>
@@ -163,6 +216,23 @@
     <script>
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function openRules() {
+            document.getElementById('rulesModal').style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeRules() {
+            document.getElementById('rulesModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('rulesModal');
+            if (event.target == modal) {
+                closeRules();
+            }
         }
 
         const indexInput = document.getElementById('IndexNumber');
