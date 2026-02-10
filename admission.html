@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
             --primary-blue: #003366;
             --accent-red: #d93025;
             --light-gray: #f8f9fa;
-            --border-color: #ced4da;
         }
 
         body { margin: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #e9ecef; color: #333; }
@@ -26,56 +26,18 @@
         .nav-links a { color: white; text-decoration: none; font-size: 13px; font-weight: 600; text-transform: uppercase; transition: 0.3s; opacity: 0.9; }
         .nav-links a:hover { opacity: 1; color: #ffcc00; }
 
-        /* Form Container */
+        /* Tally Form Container */
         .page-title { text-align: center; color: var(--primary-blue); margin: 30px 0 10px 0; font-size: 28px; text-transform: uppercase; font-weight: 800; }
         
-        .form-container { max-width: 650px; margin: 0 auto 50px auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        
-        .section-header { background: var(--light-gray); color: var(--primary-blue); padding: 12px 15px; margin: 30px 0 20px 0; font-weight: 700; text-transform: uppercase; font-size: 14px; border-left: 5px solid var(--accent-red); display: flex; justify-content: space-between; }
-        .section-header:first-of-type { margin-top: 0; }
-
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #444; }
-        
-        input, select { 
-            width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 5px; 
-            box-sizing: border-box; font-size: 15px; transition: border-color 0.3s; background-color: #fff;
+        .form-wrapper { 
+            max-width: 750px; 
+            margin: 0 auto 50px auto; 
+            background: white; 
+            padding: 10px; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            min-height: 800px;
         }
-        input:focus, select:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(0,51,102,0.1); }
-
-        /* Special Items */
-        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin: 30px 0; background: #fff8f8; padding: 20px; border-radius: 5px; border: 1px solid #f5e1e1; }
-        .checkbox-group input { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
-        .checkbox-group label { font-weight: 500; cursor: pointer; line-height: 1.5; margin-bottom: 0; }
-        .checkbox-group a { color: var(--accent-red); text-decoration: underline; font-weight: 700; cursor: pointer; }
-
-        .whatsapp-section { background: #e7f3ef; border: 1px dashed #25D366; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
-        .whatsapp-btn { 
-            display: inline-flex; align-items: center; justify-content: center; margin-top: 15px; 
-            background: #25D366; color: white; padding: 12px 30px; text-decoration: none; 
-            border-radius: 50px; font-weight: 700; font-size: 15px; transition: 0.3s; box-shadow: 0 4px 10px rgba(37,211,102,0.3);
-        }
-        .whatsapp-btn:hover { background: #1ebd59; transform: translateY(-2px); }
-        .whatsapp-btn i { margin-right: 10px; font-size: 18px; }
-
-        .submit-btn { 
-            width: 100%; background: var(--primary-blue); color: white; border: none; padding: 18px; 
-            font-size: 16px; font-weight: 700; cursor: pointer; border-radius: 6px; text-transform: uppercase; 
-            letter-spacing: 1px; transition: 0.3s; 
-        }
-        .submit-btn:hover { background: #002244; box-shadow: 0 5px 15px rgba(0,51,102,0.3); }
-
-        /* MODAL STYLES */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow-y: auto; }
-        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 30px; border-radius: 12px; width: 90%; max-width: 650px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
-        .close-modal { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; line-height: 20px; }
-        .close-modal:hover { color: #000; }
-        
-        .rules-text h2 { color: var(--primary-blue); border-bottom: 3px solid var(--accent-red); padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
-        .rules-text h3 { color: var(--primary-blue); font-size: 18px; margin-top: 25px; background: var(--light-gray); padding: 5px 10px; border-left: 4px solid var(--primary-blue); }
-        .rule-list { padding-left: 20px; }
-        .rule-list li { font-size: 15px; line-height: 1.6; margin-bottom: 12px; color: #444; }
-        .rule-list strong { color: #222; }
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 30px; font-size: 14px; }
 
@@ -83,9 +45,8 @@
             .menu-toggle { display: block; }
             .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 50px; left: 0; background: var(--primary-blue); padding: 20px; box-sizing: border-box; }
             .nav-links.active { display: flex; }
-            .form-container { padding: 25px 20px; margin: 15px; }
             .header-main h1 { font-size: 18px; }
-            .modal-content { margin: 10% auto; padding: 20px; }
+            .form-wrapper { margin: 15px; padding: 5px; }
         }
     </style>
 </head>
@@ -109,103 +70,17 @@
 
     <h1 class="page-title">Admission Form</h1>
 
-    <div class="form-container">
-        <form action="https://formspree.io/f/mwvbjgvd" method="POST">
-            <input type="hidden" name="_next" value="https://lutembe-intl.github.io/Libs/index.html?status=success">
-
-            <div class="section-header"><span>1. Applicant Details</span> <i class="fas fa-user-graduate"></i></div>
-            <div class="form-group">
-                <label>Student's Full Name</label>
-                <input type="text" name="StudentName" placeholder="e.g. Mugalu Edris" required>
-            </div>
-
-            <div class="form-group">
-                <label>Date of Birth</label>
-                <input type="date" name="DOB" required>
-            </div>
-
-            <div class="form-group">
-                <label>PLE Index Number</label>
-                <input type="text" id="IndexNumber" name="IndexNumber" placeholder="000000/000" pattern="[0-9]{6}/[0-9]{3}" maxlength="10" required>
-            </div>
-
-            <div class="section-header"><span>2. PLE Academic Results</span> <i class="fas fa-file-invoice"></i></div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="form-group"><label>English</label><select name="English" required><option value="">Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
-                <div class="form-group"><label>Mathematics</label><select name="Mathematics" required><option value="">Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
-                <div class="form-group"><label>SST</label><select name="SST" required><option value="">Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
-                <div class="form-group"><label>Science</label><select name="Science" required><option value="">Grade</option><option>D1</option><option>D2</option><option>C3</option><option>C4</option><option>C5</option><option>C6</option><option>P7</option><option>P8</option><option>F9</option></select></div>
-            </div>
-
-            <div class="section-header"><span>3. Parent / Guardian Info</span> <i class="fas fa-users"></i></div>
-            <div class="form-group">
-                <label>Parent/Guardian Name</label>
-                <input type="text" name="ParentName" required>
-            </div>
-            <div class="form-group">
-                <label>Telephone Contact</label>
-                <input type="tel" name="Phone" placeholder="07XXXXXXXX" required>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="agreement" name="RuleAgreement" required>
-                <label for="agreement">I confirm that I have read the <a onclick="openRules()">Rules and Regulations</a> of Lutembe Boarding School and agree to abide by them.</label>
-            </div>
-
-            <div class="whatsapp-section">
-                <p style="margin:0; font-size: 13px; font-weight: 600;">REQUIRED: Send a clear photo of the PLE Certificate</p>
-                <a href="https://wa.me/256703382700?text=I%20am%20submitting%20the%20PLE%20Certificate%20for%20admission." class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Attach via WhatsApp
-                </a>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit Application</button>
-        </form>
-    </div>
-
-    <div id="rulesModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeRules()">&times;</span>
-            <div class="rules-text">
-                <h2>Rules & Regulations</h2>
-                
-                <h3>1. Fundamental Principle</h3>
-                <ul class="rule-list" style="list-style-type: none; padding-left: 0;">
-                    <li><strong>1.1 Common sense must be common.</strong> This is the guiding principle for all behavior within the school community.</li>
-                </ul>
-
-                <h3>2. Academic Conduct</h3>
-                <ol class="rule-list">
-                    <li><strong>Language:</strong> English is the official language of communication at all times except during Swahili or Luganda lessons.</li>
-                    <li><strong>Punctuality:</strong> All students are expected to be respectful towards the bell. Students must follow the school programs and the school Timetable. Lack of punctuality may lead to serious penalties.Students must be in their respective classrooms, assemblies at the exact designated times.</li>
-                    <li><strong>Preparation:</strong> Every student must attend all morning and evening preps (self-study sessions) without fail.</li>
-                </ol>
-
-                <h3>3. Personal Grooming & Uniform</h3>
-                <ol class="rule-list" start="4">
-                    <li><strong>Official Uniform:</strong> The school uniform must be worn neatly and in full. "Slimming" of trousers or shortening of skirts is strictly prohibited.</li>
-                    <li><strong>Hair:</strong> Boys must keep their hair at a maximum height of 1 inch. Girls must keep their hair short and natural or in simple, school-approved braids. No hair extensions or chemicals.</li>
-                    
-                    <li><strong>Jewelry:</strong> No jewelry (earrings, necklaces, rings) or makeup/nail polish is allowed on school premises.</li>
-                </ol>
-
-                <h3>4. Prohibited Items (Contraband)</h3>
-                <ol class="rule-list" start="7">
-                    <li><strong>Electronics:</strong> Mobile phones, radios, tablets, and cameras are strictly banned. Possession results in immediate confiscation and disciplinary action.</li>
-                    <li><strong>Intoxicants:</strong> Alcohol, cigarettes, and illicit drugs are a "Zero Tolerance" offense leading to immediate expulsion.</li>
-               
-              </ol>
-
-                <h3>5. Discipline & Safety</h3>
-                <ol class="rule-list" start="10">
-                    <li><strong>Out of Bounds:</strong> No student may leave the school gate without a signed Gate Pass from the Headteacher or Warden.</li>
-                    <li><strong>Relationships:</strong> Romantic relationships ("Coupling") between students are strictly forbidden. The only type of relationship in the school is strictly academic relationships.
-                    </li>
-                    <li><strong>Respect:</strong> Absolute respect must be shown to all staff, prefects, and fellow students. Bullying or "teasing" will lead to expulsion.</li>
-                </ol>
-            </div>
-            <button class="submit-btn" style="margin-top:20px;" onclick="closeRules()">I Accept the Rules</button>
-        </div>
+    <div class="form-wrapper">
+        <iframe 
+            data-tally-src="https://tally.so/embed/2EN4Qj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+            loading="lazy" 
+            width="100%" 
+            height="800" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            title="Admission Form">
+        </iframe>
     </div>
 
     <footer>
@@ -213,34 +88,12 @@
         <p style="opacity: 0.8; margin-top: 5px;">Exploring the Heights </p>
     </footer>
 
+    <script async src="https://tally.so/widgets/embed.js"></script>
+
     <script>
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
-
-        function openRules() {
-            document.getElementById('rulesModal').style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeRules() {
-            document.getElementById('rulesModal').style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-
-        window.onclick = function(event) {
-            let modal = document.getElementById('rulesModal');
-            if (event.target == modal) {
-                closeRules();
-            }
-        }
-
-        const indexInput = document.getElementById('IndexNumber');
-        indexInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/[^0-9]/g, '');
-            if (value.length > 6) { value = value.slice(0, 6) + '/' + value.slice(6, 9); }
-            e.target.value = value;
-        });
     </script>
 </body>
 </html>
