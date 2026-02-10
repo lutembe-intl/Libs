@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
             --light-gray: #f8f9fa;
         }
 
-        body { margin: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #e9ecef; color: #333; }
+        body { margin: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #e9ecef; color: #333; overflow-x: hidden; }
         
         /* Header & Nav */
         .header-main { background: white; padding: 20px; display: flex; align-items: center; justify-content: center; gap: 20px; border-bottom: 5px solid var(--primary-blue); color: var(--primary-blue); text-transform: uppercase; }
@@ -26,17 +25,18 @@
         .nav-links a { color: white; text-decoration: none; font-size: 13px; font-weight: 600; text-transform: uppercase; transition: 0.3s; opacity: 0.9; }
         .nav-links a:hover { opacity: 1; color: #ffcc00; }
 
-        /* Tally Form Container */
+        /* Tally Form Container - Adjusted for smoothness */
         .page-title { text-align: center; color: var(--primary-blue); margin: 30px 0 10px 0; font-size: 28px; text-transform: uppercase; font-weight: 800; }
         
         .form-wrapper { 
             max-width: 750px; 
             margin: 0 auto 50px auto; 
             background: white; 
-            padding: 10px; 
+            padding: 5px; /* Reduced padding helps mobile fit */
             border-radius: 8px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            min-height: 800px;
+            /* Fixes the sticky feeling on touch screens */
+            -webkit-overflow-scrolling: touch; 
         }
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 30px; font-size: 14px; }
@@ -46,7 +46,7 @@
             .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 50px; left: 0; background: var(--primary-blue); padding: 20px; box-sizing: border-box; }
             .nav-links.active { display: flex; }
             .header-main h1 { font-size: 18px; }
-            .form-wrapper { margin: 15px; padding: 5px; }
+            .form-wrapper { margin: 10px; }
         }
     </style>
 </head>
@@ -75,7 +75,7 @@
             data-tally-src="https://tally.so/embed/2EN4Qj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
             loading="lazy" 
             width="100%" 
-            height="800" 
+            height="500" 
             frameborder="0" 
             marginheight="0" 
             marginwidth="0" 
