@@ -6,15 +6,16 @@
     <title>Admission Form - Lutembe Boarding School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary-blue: #003366; }
+        :root { --primary-blue: #003366; --accent-gold: #f4b400; }
 
         html, body { 
             margin: 0; padding: 0; width: 100%; 
             background-color: #e9ecef; color: #333; 
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
         
+        /* Header & Navigation */
         .header-main { background: white; padding: 15px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 5px solid var(--primary-blue); }
         .header-main img { width: 60px; height: auto; }
         .header-main h1 { font-size: 20px; margin: 0; color: var(--primary-blue); text-transform: uppercase; }
@@ -23,30 +24,89 @@
         .nav-links { display: flex; gap: 20px; margin: 0 auto; }
         .nav-links a { color: white; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; }
 
-        .page-title { text-align: center; color: var(--primary-blue); margin: 25px 0; font-size: 24px; text-transform: uppercase; }
+        .page-title { text-align: center; color: var(--primary-blue); margin: 25px 0 10px 0; font-size: 24px; text-transform: uppercase; }
         
-        /* THE FIX: Fixed height prevents the 'Lag' from the resize script */
+        /* Agreement Section */
+        .agreement-container {
+            max-width: 750px;
+            margin: 0 auto 15px auto;
+            padding: 15px;
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .agreement-container input[type="checkbox"] { transform: scale(1.3); cursor: pointer; }
+        .agreement-container label { font-size: 14px; cursor: pointer; color: #856404; font-weight: 500; }
+        .rules-link { color: var(--primary-blue); font-weight: bold; text-decoration: underline; cursor: pointer; }
+
+        /* Form Wrapper & Centered Overlay */
         .form-wrapper { 
             max-width: 750px; 
             margin: 0 auto 40px auto; 
             background: white; 
             border-radius: 8px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            height: 75vh; /* Form takes up 75% of screen height */
+            height: 75vh; 
             overflow: hidden;
+            position: relative;
         }
 
-        iframe { 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
+        #formLockOverlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Horizontally center */
+            justify-content: center; /* Vertically center */
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease;
+        }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 25px;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 650px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+        .modal-header { border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 15px; color: var(--primary-blue); text-align: center; }
+        .rules-list { padding-left: 20px; line-height: 1.6; }
+        .rules-list li { margin-bottom: 12px; font-size: 14px; color: #444; }
+        .main-rule { font-size: 18px; color: #d9534f; font-weight: bold; text-align: center; list-style: none; margin-bottom: 20px !important; border: 1px dashed #d9534f; padding: 10px; border-radius: 5px; }
+        
+        .close-btn { 
+            background: var(--primary-blue); color: white; border: none; 
+            padding: 12px 25px; border-radius: 5px; width: 100%; 
+            font-weight: bold; cursor: pointer; margin-top: 15px;
         }
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 20px; font-size: 13px; }
 
         @media (max-width: 768px) {
             .header-main h1 { font-size: 16px; }
-            .form-wrapper { margin: 10px; height: 80vh; } /* Slightly taller on mobile */
+            .form-wrapper { margin: 10px; height: 80vh; }
+            .agreement-container { margin: 10px; flex-direction: row; text-align: left; }
         }
     </style>
 </head>
@@ -67,16 +127,89 @@
 
     <h1 class="page-title">Admission Form</h1>
 
+    <div class="agreement-container">
+        <input type="checkbox" id="rulesCheckbox" onchange="checkAgreement()">
+        <label for="rulesCheckbox">
+            I confirm that I have read and will abide by the 
+            <span class="rules-link" onclick="openModal()">Rules and Regulations</span>.
+        </label>
+    </div>
+
     <div class="form-wrapper">
+        <div id="formLockOverlay">
+            <i class="fas fa-lock" style="font-size: 50px; color: var(--primary-blue); margin-bottom: 20px;"></i>
+            <h2 style="margin: 0; color: var(--primary-blue);">FORM LOCKED</h2>
+            <p style="max-width: 300px; line-height: 1.5; color: #666;">Please read the rules and check the box above to access the admission form.</p>
+        </div>
+
         <iframe 
             src="https://tally.so/embed/2EN4Qj?alignLeft=1&hideTitle=1&transparentBackground=0" 
             title="Admission Form">
         </iframe>
     </div>
 
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="margin:0;"><i class="fas fa-scroll"></i> Rules & Regulations</h2>
+            </div>
+            <ul class="rules-list">
+                <li class="main-rule">"COMMON SENSE MUST BE COMMON"</li>
+                <li><strong>Uniform:</strong> All students must wear the full, correct school uniform. Mixing with civilian clothes is strictly prohibited.</li>
+                <li><strong>Prohibited Items:</strong> Mobile phones, radios (electronics) are strictly forbidden.</li>
+                <li><strong>Language:</strong> English is the only language of communication. Use of vernacular or slang is an offense.</li>
+                <li><strong>Punctuality:</strong> Students must be in class, at assembly, or at the dining hall exactly when the bell rings.</li>
+                <li><strong>Dormitory Rules:</strong> No student is allowed in the dormitory during class hours or without permission from the Matron/Warden. 
+Visiting dormitories of opposite sex is highly prohibited. Boys are strictly forbidden from entering the Girls' wing and vice versa. This attracts immediate expulsion.</li>
+                <li><strong>Academic Integrity:</strong> Cheating in exams or failing to do assignments will lead to severe disciplinary action.</li>
+                <li><strong>Property:</strong> Respect school property. Any student found damaging school property will be required to replace it with a new one.</li>
+                <li><strong>Respect:</strong> Absolute respect must be shown to all teaching staff, non-teaching staff, and student leaders (Prefects).</li>
+                <li><strong>Bullying:</strong> We have zero tolerance for "teasing" or bullying of new students. Offenders will be expelled.</li>
+            </ul>
+            <button class="close-btn" onclick="closeModal()">I HAVE READ & AGREE</button>
+        </div>
+    </div>
+
     <footer>
-        <p><strong>LUTEMBE BOARDING SCHOOL INT'L</strong></p>
+        <p><strong>LUTEMBE BOARDING SCHOOL INT'L</strong><br>© 2026 All Rights Reserved</p>
     </footer>
+
+    <script>
+        // Modal Control
+        function openModal() {
+            document.getElementById('rulesModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('rulesModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Agreement Control
+        function checkAgreement() {
+            const isChecked = document.getElementById('rulesCheckbox').checked;
+            const overlay = document.getElementById('formLockOverlay');
+            
+            if (isChecked) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.visibility = 'hidden';
+                }, 300);
+            } else {
+                overlay.style.visibility = 'visible';
+                overlay.style.opacity = '1';
+            }
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            let modal = document.getElementById('rulesModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
